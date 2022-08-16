@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:todo_list_app/core/util/blocs/app/app_cubit.dart';
+import 'package:todo_list_app/core/util/blocs/app/cubit.dart';
 
 class DropdownButtonWidget extends StatefulWidget {
   final List<String> itemList;
@@ -27,9 +27,8 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
         padding: const EdgeInsets.only(right: 14),
         child: Icon(
           Icons.keyboard_arrow_down,
-          color: AppCubit.get(context).isDark
-              ? Colors.grey.shade600
-              : Colors.grey.shade800,
+          color:
+              AppCubit.get(context).isDark ? Colors.grey.shade500 : Colors.grey,
         ),
       ),
       items: widget.itemList.map((String items) {

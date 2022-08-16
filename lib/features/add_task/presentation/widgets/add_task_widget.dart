@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_list_app/core/services/notifications/task_notification.dart';
-import 'package:todo_list_app/core/util/blocs/app/app_cubit.dart';
+import 'package:todo_list_app/core/util/blocs/app/cubit.dart';
 import 'package:todo_list_app/core/util/widgets/default_button_widget.dart';
 import 'package:todo_list_app/core/util/widgets/color_picker_widget.dart';
 import 'package:todo_list_app/core/util/widgets/dropdown_widget.dart';
@@ -16,6 +16,8 @@ class AddTaskWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+    final Color suffixIconColor =
+    AppCubit.get(context).isDark ? Colors.grey.shade500 : Colors.grey;
 
     return Scaffold(
       appBar: AppBar(
@@ -39,66 +41,42 @@ class AddTaskWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    LabelTextWidget(
+                    const LabelTextWidget(
                       label: 'Title:',
-                      color: AppCubit.get(context).isDark
-                          ? Colors.white
-                          : Colors.grey.shade800,
                     ),
                     TextFormFieldWidget(
                       controller: AppCubit.get(context).titleController,
                       type: TextInputType.text,
                       validation: "Title is required",
-                      fillColor: AppCubit.get(context).isDark
-                          ? Colors.grey.shade200
-                          : Colors.grey.shade50,
                       suffixIcon: Icon(
                         Icons.title_outlined,
-                        color: AppCubit.get(context).isDark
-                            ? Colors.grey.shade600
-                            : Colors.grey.shade800,
+                        color: suffixIconColor,
                       ),
                       hintText: 'Task Title',
                     ),
-                    LabelTextWidget(
+                    const LabelTextWidget(
                       label: 'Description:',
-                      color: AppCubit.get(context).isDark
-                          ? Colors.white
-                          : Colors.grey.shade800,
                     ),
                     TextFormFieldWidget(
                       controller: AppCubit.get(context).descriptionController,
                       type: TextInputType.text,
                       validation: "Description is required",
-                      fillColor: AppCubit.get(context).isDark
-                          ? Colors.grey.shade200
-                          : Colors.grey.shade50,
                       suffixIcon: Icon(
                         Icons.description_outlined,
-                        color: AppCubit.get(context).isDark
-                            ? Colors.grey.shade600
-                            : Colors.grey.shade800,
+                        color: suffixIconColor,
                       ),
                       hintText: 'Task Description',
                     ),
-                    LabelTextWidget(
+                    const LabelTextWidget(
                       label: 'Date:',
-                      color: AppCubit.get(context).isDark
-                          ? Colors.white
-                          : Colors.grey.shade800,
                     ),
                     TextFormFieldWidget(
                       controller: AppCubit.get(context).dateController,
                       type: TextInputType.none,
                       validation: "Date is required",
-                      fillColor: AppCubit.get(context).isDark
-                          ? Colors.grey.shade200
-                          : Colors.grey.shade50,
                       suffixIcon: Icon(
                         Icons.calendar_today_outlined,
-                        color: AppCubit.get(context).isDark
-                            ? Colors.grey.shade600
-                            : Colors.grey.shade800,
+                        color: suffixIconColor,
                       ),
                       hintText: "Task Date",
                       onTap: () {
@@ -123,11 +101,8 @@ class AddTaskWidget extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            LabelTextWidget(
+                            const LabelTextWidget(
                               label: 'Start Time:',
-                              color: AppCubit.get(context).isDark
-                                  ? Colors.white
-                                  : Colors.grey.shade800,
                             ),
                             TextFormFieldWidget(
                               width: 145,
@@ -135,14 +110,9 @@ class AddTaskWidget extends StatelessWidget {
                                   AppCubit.get(context).startTimeController,
                               type: TextInputType.none,
                               validation: "Start Time is required",
-                              fillColor: AppCubit.get(context).isDark
-                                  ? Colors.grey.shade200
-                                  : Colors.grey.shade50,
                               suffixIcon: Icon(
                                 Icons.watch_later_outlined,
-                                color: AppCubit.get(context).isDark
-                                    ? Colors.grey.shade600
-                                    : Colors.grey.shade800,
+                                color: suffixIconColor,
                               ),
                               hintText: "Start time",
                               onTap: () {
@@ -164,11 +134,8 @@ class AddTaskWidget extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            LabelTextWidget(
+                            const LabelTextWidget(
                               label: 'End Time:',
-                              color: AppCubit.get(context).isDark
-                                  ? Colors.white
-                                  : Colors.grey.shade800,
                             ),
                             TextFormFieldWidget(
                               width: 145,
@@ -176,14 +143,9 @@ class AddTaskWidget extends StatelessWidget {
                                   AppCubit.get(context).endTimeController,
                               type: TextInputType.none,
                               validation: "End Time is required",
-                              fillColor: AppCubit.get(context).isDark
-                                  ? Colors.grey.shade200
-                                  : Colors.grey.shade50,
                               suffixIcon: Icon(
                                 Icons.watch_later_outlined,
-                                color: AppCubit.get(context).isDark
-                                    ? Colors.grey.shade600
-                                    : Colors.grey.shade800,
+                                color: suffixIconColor,
                               ),
                               hintText: "End time",
                               onTap: () {
@@ -217,18 +179,12 @@ class AddTaskWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                    LabelTextWidget(
+                    const LabelTextWidget(
                       label: 'Remind:',
-                      color: AppCubit.get(context).isDark
-                          ? Colors.white
-                          : Colors.grey.shade800,
                     ),
                     TextFormFieldWidget(
                       controller: AppCubit.get(context).remindController,
                       validation: "Remind is required",
-                      fillColor: AppCubit.get(context).isDark
-                          ? Colors.grey.shade200
-                          : Colors.grey.shade50,
                       type: TextInputType.none,
                       suffixIcon: DropdownButtonWidget(
                         itemList: AppCubit.get(context).remindList,

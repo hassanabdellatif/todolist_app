@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_list_app/core/services/notifications/notification_services.dart';
-import 'package:todo_list_app/core/util/blocs/app/app_cubit.dart';
+import 'package:todo_list_app/core/util/blocs/app/cubit.dart';
 
 void sendTaskNotification(
   BuildContext context, {

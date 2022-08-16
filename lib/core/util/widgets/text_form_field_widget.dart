@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list_app/core/util/blocs/app/cubit.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
   final String? validation;
@@ -9,7 +10,6 @@ class TextFormFieldWidget extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final VoidCallback? onTap;
-  final Color? fillColor;
 
   const TextFormFieldWidget({
     super.key,
@@ -21,7 +21,6 @@ class TextFormFieldWidget extends StatelessWidget {
     this.suffixIcon,
     this.onTap,
     this.width = double.infinity,
-    this.fillColor,
   });
 
   @override
@@ -52,7 +51,9 @@ class TextFormFieldWidget extends StatelessWidget {
             hintText: hintText,
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
-            fillColor: fillColor,
+            fillColor: AppCubit.get(context).isDark
+                ? Colors.grey.shade200
+                : Colors.grey.shade50,
           ),
         ),
       ),

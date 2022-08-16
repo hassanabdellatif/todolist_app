@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_list_app/core/services/notifications/notification_services.dart';
-import 'package:todo_list_app/core/util/blocs/app/app_cubit.dart';
+import 'package:todo_list_app/core/util/blocs/app/cubit.dart';
+import 'package:todo_list_app/core/util/local/cache_helper.dart';
 import 'package:todo_list_app/features/add_task/presentation/pages/add_task_page.dart';
 import 'package:todo_list_app/features/board/presentation/pages/board_page.dart';
 import 'package:todo_list_app/features/board/presentation/widgets/all_tasks.dart';
@@ -15,21 +16,26 @@ import 'package:todo_list_app/features/splash_page/presentation/pages/splash_pag
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  AwesomeNotificationsHelper().initialAwesomeNotifications();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  AwesomeNotificationsHelper().initialAwesomeNotifications();
-  runApp(const MyApp());
+  await CacheHelper.init();
+  bool? isDark = CacheHelper.getBoolean(key: 'isDark');
+  runApp(MyApp(isDark: isDark));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final bool? isDark;
+  MyApp({this.isDark});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AppCubit>(
-      create: (context) => AppCubit()..initialDatabase(),
+      create: (context) => AppCubit()
+        ..initialDatabase()
+        ..changeThemeMode(fromShared: isDark),
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {

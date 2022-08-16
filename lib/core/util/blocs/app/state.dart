@@ -1,4 +1,4 @@
-part of 'app_cubit.dart';
+part of 'cubit.dart';
 
 @immutable
 abstract class AppStates {}
@@ -23,4 +23,4 @@ class AppDatabaseLoadingState extends AppStates {}
 
 class AppDatabaseTasksState extends AppStates {}
 
-class AppChangeModeState extends AppStates {}
+class AppThemeModeChangeState extends AppStates {}

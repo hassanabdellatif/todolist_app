@@ -1,7 +1,7 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:todo_list_app/core/util/blocs/app/app_cubit.dart';
+import 'package:todo_list_app/core/util/blocs/app/cubit.dart';
 import 'package:todo_list_app/core/util/constants/colors.dart';
 import 'package:todo_list_app/core/util/constants/strings.dart';
 import 'package:todo_list_app/features/schedule/presentation/widgets/schedule_listview.dart';

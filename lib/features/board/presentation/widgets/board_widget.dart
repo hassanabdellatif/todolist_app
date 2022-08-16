@@ -1,4 +1,4 @@
-import 'package:todo_list_app/core/util/blocs/app/app_cubit.dart';
+import 'package:todo_list_app/core/util/blocs/app/cubit.dart';
 import 'package:todo_list_app/core/util/widgets/default_button_widget.dart';
 import 'package:todo_list_app/features/board/presentation/widgets/all_tasks.dart';
 import 'package:todo_list_app/features/board/presentation/widgets/completed_tasks.dart';
@@ -37,7 +37,7 @@ class BoardWidget extends StatelessWidget {
                 Icons.brightness_4_outlined,
               ),
               onPressed: () {
-                AppCubit.get(context).changeAppMode();
+                AppCubit.get(context).changeThemeMode();
               },
             ),
           ],

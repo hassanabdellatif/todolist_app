@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list_app/core/util/blocs/app/app_cubit.dart';
+import 'package:todo_list_app/core/util/blocs/app/cubit.dart';
 import 'package:todo_list_app/core/util/constants/colors.dart';
 import 'package:todo_list_app/core/util/widgets/label_text_widget.dart';
 
@@ -20,9 +20,6 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
       children: [
         LabelTextWidget(
           label: 'Pick a color:',
-          color: AppCubit.get(context).isDark
-              ? Colors.white
-              : Colors.grey.shade800,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,

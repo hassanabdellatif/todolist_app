@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path/path.dart' as p;
 import 'package:sqflite/sqflite.dart';
+import 'package:todo_list_app/core/util/local/cache_helper.dart';
 
-part 'app_state.dart';
+part 'state.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());
@@ -188,10 +189,16 @@ class AppCubit extends Cubit<AppStates> {
     );
   }
 
-  bool isDark = false;
-
-  void changeAppMode() {
-    isDark = !isDark;
-    emit(AppChangeModeState());
+  bool isDark = true;
+  void changeThemeMode({bool? fromShared}) {
+    if (fromShared != null) {
+      isDark = fromShared;
+      emit(AppThemeModeChangeState());
+    } else {
+      isDark = !isDark;
+      CacheHelper.setBoolean(key: "isDark", value: isDark).then((value) {
+        emit(AppThemeModeChangeState());
+      });
+    }
   }
 }

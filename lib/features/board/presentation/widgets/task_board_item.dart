@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list_app/core/util/blocs/app/app_cubit.dart';
+import 'package:todo_list_app/core/util/blocs/app/cubit.dart';
 import 'package:todo_list_app/core/util/constants/colors.dart';
 import 'package:todo_list_app/core/util/widgets/check_box_widget.dart';
 import 'package:todo_list_app/features/edit_task/presentation/widgets/edit_task_widget.dart';
